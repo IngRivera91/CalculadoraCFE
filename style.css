@@ -1,0 +1,229 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1, h2, h3 {
+    color: #0056b3; /* Dark blue for headings */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #007bff; /* Lighter blue for sub-headings */
+    margin-top: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none; /* Prevent text selection on click */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0; /* Add some padding for better click area */
+}
+
+.toggle-indicator {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #0056b3;
+}
+
+.config-section .tariff-group,
+.consumption-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.tariff-group .input-row {
+    display: flex;
+    gap: 10px; /* Adjust gap between columns as needed */
+}
+
+.tariff-group .input-col {
+    flex: 1; /* Each column takes equal space */
+    min-width: 0; /* Allows shrinking below content size if needed */
+}
+
+.content-hidden {
+    display: none !important; /* Ensure it's hidden, overriding other display properties */
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="number"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.results-section {
+    /* This class is no longer used for the main results display, 
+       or rather, its content has been moved. If it existed for other purposes,
+       review. For now, assuming it's fully replaced by modal. */
+    /* margin-bottom: 20px; */ /* Handled by modal positioning */
+    /* padding: 15px; */ /* Handled by .modal-content */
+    /* border: 1px solid #ddd; */ /* Handled by .modal-content */
+    /* border-radius: 5px; */ /* Handled by .modal-content */
+    /* background-color: #f9f9f9; */ /* Handled by .modal-content */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    padding-top: 60px; /* Location of the box */
+    align-items: center; /* Vertical center (if using flex) */
+    justify-content: center; /* Horizontal center (if using flex) */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* 5% from the top and centered */
+    padding: 25px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    position: relative;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styles for content within the modal, formerly .results-section */
+.modal-content h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    margin-top: 0; /* Adjust as h2 is now first in modal-content */
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.modal-content p {
+    margin: 10px 0;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.modal-content span {
+    font-weight: bold;
+    color: #333;
+}
+
+.modal-content hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 15px 0;
+}
+
+.modal-content p strong {
+    color: #0056b3; /* Dark blue for important totals */
+}
+
+/* Make it responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 15px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+}

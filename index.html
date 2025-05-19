@@ -1,0 +1,94 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Costo de Luz</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Costo de Luz</h1>
+
+        <div class="config-section">
+            
+            <div class="tariff-group">
+                <h3>Basico <span class="toggle-indicator">+</span></h3>
+                <div class="input-row toggleable-content content-hidden">
+                    <div class="input-col">
+                        <label for="limiteBajo">Límite kWh:</label>
+                        <input type="number" id="limiteBajo" min="0" step="any" placeholder="Ej: 100" value="150">
+                    </div>
+                    <div class="input-col">
+                        <label for="precioBajo">Precio kWh ($):</label>
+                        <input type="number" id="precioBajo" min="0" step="0.001" placeholder="Ej: 0.8" value="1.071">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tariff-group">
+                <h3>Intermedio <span class="toggle-indicator">+</span></h3>
+                <div class="input-row toggleable-content content-hidden">
+                    <div class="input-col">
+                        <label for="limiteMedio">Límite kWh:</label>
+                        <input type="number" id="limiteMedio" min="0" step="any" placeholder="Ej: 150" value="200">
+                    </div>
+                    <div class="input-col">
+                        <label for="precioMedio">Precio kWh ($):</label>
+                        <input type="number" id="precioMedio" min="0" step="0.001" placeholder="Ej: 1.0" value="1.300">
+                    </div>
+                </div>
+            </div>
+
+            <div class="tariff-group">
+                <h3>Excedente <span class="toggle-indicator">+</span></h3>
+                <div class="input-row toggleable-content content-hidden">
+                    <div class="input-col">
+                        <label for="precioAlto">Precio kWh ($):</label>
+                        <input type="number" id="precioAlto" min="0" step="0.001" placeholder="Ej: 3.0" value="3.805">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="consumption-section">
+            <h2>Consumo</h2>
+            <div class="input-row">
+                <div class="input-col">
+                    <label for="consumoTotal">Consumo Total (kWh):</label>
+                    <input type="number" id="consumoTotal" min="0" step="any" placeholder="Ej: 250">
+                </div>
+            </div>
+        </div>
+
+        <button id="calcularBtn">Calcular Costo</button>
+
+        <div id="resultsModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeModalBtn">&times;</span>
+                <h2>Resultados</h2>
+                <p>kWh en Tarifa Baja: <span id="kwhBajoRes">0.00</span> kWh</p>
+                <p>Costo Tarifa Baja: $<span id="costoBajoRes">0.00</span></p>
+                <hr>
+                <p>kWh en Tarifa Media: <span id="kwhMedioRes">0.00</span> kWh</p>
+                <p>Costo Tarifa Media: $<span id="costoMedioRes">0.00</span></p>
+                <hr>
+                <p>kWh en Tarifa Alta: <span id="kwhAltoRes">0.00</span> kWh</p>
+                <p>Costo Tarifa Alta: $<span id="costoAltoRes">0.00</span></p>
+                <hr>
+                <p><strong>Subtotal: $<span id="subtotalRes">0.00</span></strong></p>
+                <p>IVA (16%): $<span id="ivaRes">0.00</span></p>
+                <p><strong>Total a Pagar: $<span id="totalFinalRes">0.00</span></strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
